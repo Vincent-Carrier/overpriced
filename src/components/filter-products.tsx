@@ -5,18 +5,8 @@ import { Field, Fieldset, Label } from "@/components/fieldset";
 import { Input } from "@/components/input";
 import { Select } from "@/components/select";
 import { Radio, RadioField, RadioGroup } from "./radio";
-import { useEffect } from "react";
 
-const colors = [
-    'Cloud',
-    'Olive Green',
-    'Agave',
-    'Moonlight',
-    'Sepia',
-    'Dark Cyprus'
-]
-
-export default function FilterProducts({ filter }: { filter?: any }) {
+export default function FilterProducts({ filter, colorOptions }: { filter?: any, colorOptions: string[] }) {
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -38,7 +28,7 @@ export default function FilterProducts({ filter }: { filter?: any }) {
                     <Label htmlFor="color">Color</Label>
                     <Select defaultValue={filter?.color} name='color'>
                         <option key="" defaultChecked />
-                        {colors.map(color => <option key={color}>{color}</option>)}
+                        {colorOptions.map(color => <option key={color}>{color}</option>)}
                     </Select>
                 </Field>
                 <Field>
